@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     }
   }
   while (fscanf(input, "%d", &scan_buffer[BUFSIZE]) != EOF);
-  printf("%d", count);
+  printf("%d\n", count);
   fclose(input);
   return 0;
 }
