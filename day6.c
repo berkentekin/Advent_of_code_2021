@@ -30,9 +30,8 @@ long long solve(int* arr, int days)
 	long long temp_0 = 0;
 	for (int i = 0; i < NEWBREEDTIME+1; i++)
 		no_of_fishes[i] = 0;
-	for (int i = 0; arr[i] != -1; i++) {
+	for (int i = 0; arr[i] != -1; i++)
 		no_of_fishes[arr[i]]++;
-	}
 	for (int i = 0; i < days; i++) {
 		temp_0 = no_of_fishes[0];
 		for (int j = 1; j < NEWBREEDTIME+1; j++) {
@@ -48,7 +47,7 @@ long long solve(int* arr, int days)
 
 void scan_file(FILE *f, int* arr)
 {
-	int i;
+	unsigned int i;
 	char scanfile[1000];
 	char *tok;
 	if (fgets(scanfile, 1000, f) != NULL) {
