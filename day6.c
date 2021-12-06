@@ -40,7 +40,6 @@ long long solve(int* arr, int days)
 		}
 		no_of_fishes[NEWBREEDTIME] = temp_0;
 		no_of_fishes[BREEDTIME] += temp_0;
-		temp_0 = 0;
 	}
 	for (int i = 0; i < NEWBREEDTIME+1; i++)
 		result += no_of_fishes[i];
