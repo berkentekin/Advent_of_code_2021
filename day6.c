@@ -13,6 +13,10 @@ int main(int argc, char *argv[])
 	FILE *input;
 	int lanternfish[1000];
 	long long solved;
+	if (argc != 3) {
+		puts("Enter the file loaction and the no. of days");
+		return EXIT_FAILURE;
+	}
 	input = fopen(argv[1], "r");
 	scan_file(input, lanternfish);
 	solved = solve(lanternfish, atoi(argv[2]));
