@@ -74,5 +74,7 @@ void scan_file(FILE *f, int* arr)
 		}
 		arr[i] = -1;
 	}
+        fclose(f);
+
 	
 }

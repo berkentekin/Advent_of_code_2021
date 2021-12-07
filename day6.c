@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 	input = fopen(argv[1], "r");
 	scan_file(input, lanternfish);
 	solved = solve(lanternfish, atoi(argv[2]));
-	printf("%lld", solved);
+	printf("%lld\n", solved);
 	return EXIT_SUCCESS;
 	
 }
@@ -57,5 +57,6 @@ void scan_file(FILE *f, int* arr)
 		}
 		arr[i] = -1;
 	}
+	fclose(f);
 	
 }
