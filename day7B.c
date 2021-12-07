@@ -34,7 +34,7 @@ int arr_max(int *arr, int size)
 
 long long solve(int* arr)
 {
-	long long result = 0, result_cache = 0;
+	long long result = -1, result_cache = 0;
 	int size = 0, i;
 	int optimal;
 
@@ -50,7 +50,7 @@ long long solve(int* arr)
 					 * (abs(optimal - arr[i])+1))
 				/ 2;
 		}
-		if (result == 0 || result_cache < result)
+		if (result == -1 || result_cache < result)
 			result = result_cache;
 		result_cache = 0;
 	}
