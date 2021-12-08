@@ -7,7 +7,7 @@ IN = inputs/$(NAME)_input.in
 %.o: %.c
 	$(CC) $(CFLAGS) $< -c -o $@ 
 $(NAME).out: $(OBJ)
-	$(CC) -o $@ $^ $(CFLAGS)
+	$(CC) $^ $(CFLAGS) -o $@ 
 run: $(NAME).out
 	./$(NAME).out $(IN)
 

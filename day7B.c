@@ -2,10 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+#include "cutils/utils.h"
 
 #define MAXSIZE 10000
 
-void scan_file(FILE *f, int* arr);
 long long solve(int* arr);
 double arr_avg(int *arr, int size);
 
@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	input = fopen(argv[1], "r");
-	scan_file(input, crabs);
+	scan_file(input, crabs, ",");
 	printf("%lld\n", solve(crabs));
 	exit(EXIT_SUCCESS);
 
@@ -58,23 +58,3 @@ long long solve(int* arr)
 	return result;
 }
 
-void scan_file(FILE *f, int* arr)
-{
-	unsigned int i;
-	char scanfile[MAXSIZE];
-	char *tok;
-
-	if (fgets(scanfile, MAXSIZE, f) != NULL) {
-		tok = strtok(scanfile, ",");
-		for (i = 0; tok != NULL
-			     && i < sizeof(scanfile)/sizeof(char);
-		     i++) {
-			arr[i] = atoi(tok);
-			tok = strtok(NULL, ",");
-		}
-		arr[i] = -1;
-	}
-        fclose(f);
-
-	
-}
