@@ -1,10 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include "cutils/utils.h"
 #define BREEDTIME 6
 #define NEWBREEDTIME 8
-void scan_file(FILE *f, int* str);
 long long solve(int* arr, int days);
 
 int main(int argc, char *argv[])
@@ -17,7 +16,7 @@ int main(int argc, char *argv[])
 		return EXIT_FAILURE;
 	}
 	input = fopen(argv[1], "r");
-	scan_file(input, lanternfish);
+	scan_file(input, lanternfish, ",");
 	solved = solve(lanternfish, atoi(argv[2]));
 	printf("%lld\n", solved);
 	return EXIT_SUCCESS;
@@ -44,19 +43,3 @@ long long solve(int* arr, int days)
 	return result;
 }
 
-void scan_file(FILE *f, int* arr)
-{
-	unsigned int i;
-	char scanfile[1000];
-	char *tok;
-	if (fgets(scanfile, 1000, f) != NULL) {
-		tok = strtok(scanfile, ",");
-		for (i = 0; tok != NULL && i < sizeof(scanfile)/sizeof(char); i++) {
-			arr[i] = atoi(tok);
-			tok = strtok(NULL, ",");
-		}
-		arr[i] = -1;
-	}
-	fclose(f);
-	
-}

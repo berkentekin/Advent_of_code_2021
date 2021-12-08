@@ -1,9 +1,14 @@
 CC=gcc
-CFLAGS=-I.
+CFLAGS=-I. -Wall -g -lm
 DEPS = cutils/utils.h
+OBJ = cutils/utils.o $(NAME).o 
+IN = inputs/$(NAME)_input.in
 
-%.o: %.c $(DEPS)
-	$(CC) -c -o $@ $< $(CFLAGS)
+%.o: %.c
+	$(CC) $(CFLAGS) $< -c -o $@ 
+$(NAME).out: $(OBJ)
+	$(CC) -o $@ $^ $(CFLAGS)
+run: $(NAME).out
+	./$(NAME).out $(IN)
 
-day7: cutils/utils.o day7.o
-	$(CC) -o day7 cutils/utils.o day7.o
+

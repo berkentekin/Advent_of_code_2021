@@ -1,0 +1,10 @@
+#!/bin/bash
+if [ -z "$1" ]; then
+	echo "Enter day no"
+	exit 1
+fi
+echo "Compiling"
+NAME=day$1 make
+echo "Running"
+./day$1.out inputs/day$1_input.in ${@:2}
+ 
