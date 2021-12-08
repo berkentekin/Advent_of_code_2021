@@ -7,6 +7,7 @@
 
 void scan_file(FILE *f, int* arr);
 long long solve(int* arr);
+double arr_avg(int *arr, int size);
 
 int main(int argc, char *argv[])
 {
@@ -14,45 +15,44 @@ int main(int argc, char *argv[])
 	int crabs[MAXSIZE];
 	if (argc != 2) {
 		puts("Enter the file loaction");
-		return EXIT_FAILURE;
+		exit(EXIT_FAILURE);
 	}
 	input = fopen(argv[1], "r");
 	scan_file(input, crabs);
 	printf("%lld\n", solve(crabs));
-	return EXIT_SUCCESS;
+	exit(EXIT_SUCCESS);
 
 }
 
-int arr_max(int *arr, int size)
-{
-	int i, max = arr[0];
-	for (i = 0; i < size; i++)
-		if (arr[i] > max)
-			max = arr[i];
-	return max;
+double arr_avg(int *arr, int size) {
+    long long sum = 0;
+    for (int i = 0; i < size; sum += arr[i++]);
+    return sum / (double) size;
+    
 }
 
 long long solve(int* arr)
 {
 	long long result = -1, result_cache = 0;
 	int size = 0, i;
-	int optimal;
+	long average;
 
 	for (int i = 0; arr[i] != -1; i++) {
 		size++;
 	}
+	average = round(arr_avg(arr, size));
 	/*
-	  Brute force approach, using the average didn't work
-	*/
-	for (optimal = 0; optimal <= arr_max(arr, size); optimal++) {
-		for (i = 0; i < size; i++) {
-			result_cache += (abs(optimal - arr[i])
-					 * (abs(optimal - arr[i])+1))
-				/ 2;
-		}
-		if (result == -1 || result_cache < result)
-			result = result_cache;
-		result_cache = 0;
+	  shorturl.at/fCJRU
+	 */
+	for (long j = average - 1; j <= average + 1; j++) {
+	    for (int i = 0; i < size; i++)
+		result_cache += (labs(j - arr[i])
+			     * (labs(j - arr[i])+1))
+		/ 2;
+	
+	    if (result == -1 || result_cache < result)
+		result = result_cache;
+	    result_cache = 0;
 	}
     
 	return result;

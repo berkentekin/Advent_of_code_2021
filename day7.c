@@ -41,10 +41,7 @@ long long solve(int* arr)
 	}
 	qsort(arr, size, sizeof(*arr), cmp);
 	/* https://en.wikipedia.org/wiki/Geometric_median */
-	if (size % 2 == 0)
-		median = (arr[(size/2)] + arr[(size/2)-1]) / 2;
-	else
-		median = arr[size/2];
+	median = size % 2 ? (arr[size/2] + arr[(size/2)-1]) / 2 : arr[size/2];
 	for (int i = 0; i < size; i++) {
 		total_dist += abs((int) median - arr[i]);
 	}
