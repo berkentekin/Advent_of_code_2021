@@ -1,0 +1,9 @@
+CC=gcc
+CFLAGS=-I.
+DEPS = cutils/utils.h
+
+%.o: %.c $(DEPS)
+	$(CC) -c -o $@ $< $(CFLAGS)
+
+day: cutils/utils.o day8.c
+	$(CC) -o day8 day8.o cutils/utils.o 
