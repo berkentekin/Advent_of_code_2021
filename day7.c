@@ -16,12 +16,12 @@ int main(int argc, char *argv[])
 
 	if (argc != 2) {
 		puts("Enter the file loaction");
-		return EXIT_FAILURE;
+		exit(EXIT_FAILURE);
 	}
 	input = fopen(argv[1], "r");
 	scan_file(input, crabs);
 	printf("%lld\n", solve(crabs));
-	return EXIT_SUCCESS;
+	exit(EXIT_SUCCESS);
 
 }
 
