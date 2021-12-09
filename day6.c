@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 		return EXIT_FAILURE;
 	}
 	input = fopen(argv[1], "r");
-	scan_file(input, lanternfish, ",");
+	scan_line(input, lanternfish, ",");
 	solved = solve(lanternfish, atoi(argv[2]));
 	printf("%lld\n", solved);
 	return EXIT_SUCCESS;

@@ -1,6 +1,6 @@
 #include "utils.h"
 
-void scan_file(FILE *f, int* arr, char* delim)
+void scan_line(FILE *f, int* arr, char* delim)
 {
 	unsigned int i;
 	char scanfile[MAXSIZE];

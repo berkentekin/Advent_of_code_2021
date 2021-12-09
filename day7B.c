@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	input = fopen(argv[1], "r");
-	scan_file(input, crabs, ",");
+	scan_line(input, crabs, ",");
 	printf("%lld\n", solve(crabs));
 	exit(EXIT_SUCCESS);
 
