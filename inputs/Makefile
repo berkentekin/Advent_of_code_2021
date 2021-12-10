@@ -1,8 +1,8 @@
 CC=gcc
 CFLAGS=-I. -Wall -Wextra -pedantic-errors -ansi -g -lm
-DEPS = ../cutils/utils.h
-OBJ = ../cutils/utils.o $(NAME).o 
-IN = ../inputs/$(NAME)_input.in
+DEPS = cutils/utils.h
+OBJ = cutils/utils.o $(NAME).o 
+IN = inputs/$(NAME)_input.in
 
 %.o: %.c
 	$(CC) $(CFLAGS) $< -c -o $@ 

@@ -6,5 +6,5 @@ fi
 echo "Compiling"
 NAME=day$1 make
 echo "Running"
-./day$1.out inputs/day$1_input_test.in ${@:2}
+./day$1.out ../inputs/day$1_input_test.in ${@:2}
  
