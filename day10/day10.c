@@ -80,7 +80,7 @@ unsigned long solve2(char** puzzle)
 	char found;
 	char chunk[MAXSCAN], *curr_line, pop;
 	int chunk_head = 0;
-	unsigned long *scores; 
+	unsigned long *scores, result; 
 	unsigned long *curr_score;
 	int scores_size = 0;
 	scores = calloc(1, sizeof(unsigned long));
@@ -157,7 +157,9 @@ unsigned long solve2(char** puzzle)
 	}
 	scores = realloc(scores, scores_size * sizeof(unsigned long));
 	qsort(scores, scores_size, sizeof(unsigned long), cmpul);
-	return scores[scores_size / 2];
+	result = scores[scores_size/2];
+	free(scores);
+	return result;
 	
 
 }
@@ -167,7 +169,7 @@ int main(int argc, char *argv[])
 {
 	char **scanned_strs, *curr_str;
 	FILE *input;
-	size_t i;
+	size_t i, scanned_strs_size = 0;
 	if (argc != 2) {
 		puts("Type in the location for the input");
 		exit(EXIT_FAILURE);
@@ -175,14 +177,20 @@ int main(int argc, char *argv[])
 	scanned_strs = calloc(1, sizeof(char*));
 	curr_str = calloc(MAXSCAN, sizeof(char));
 	input = fopen(argv[1], "r");
-	for (i = 0; fgets(curr_str, MAXSCAN, input); i++) {
-		scanned_strs = realloc(scanned_strs, (i+1) *
+	for (i = 0; fgets(curr_str, MAXSCAN, input);
+	     i++, scanned_strs_size++) {
+		scanned_strs = realloc(scanned_strs, (i+2) *
 				       sizeof(char*));
 		scanned_strs[i] = (char *) strdup(curr_str);
 	}
 	free(curr_str);
+	fclose(input);
+	scanned_strs[i] = 0;
 	printf("%lu\n", solve1(scanned_strs));
 	printf("%lu\n", solve2(scanned_strs));
+	for (i = 0; i < scanned_strs_size; i++)
+	    free(scanned_strs[i]);
+	free(scanned_strs);
 	
 	exit(EXIT_SUCCESS);
 }
