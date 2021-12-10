@@ -80,10 +80,10 @@ unsigned long solve2(char** puzzle)
 	char found;
 	char chunk[MAXSCAN], *curr_line, pop;
 	int chunk_head = 0;
-	unsigned long *score; 
+	unsigned long *scores; 
 	unsigned long *curr_score;
-	int score_size = 0;
-	score = calloc(1, sizeof(unsigned long));
+	int scores_size = 0;
+	scores = calloc(1, sizeof(unsigned long));
 	
 	for (j = 0; (curr_line = puzzle[j]) != 0; j++) {
 		found = 0;
@@ -134,7 +134,7 @@ unsigned long solve2(char** puzzle)
 			
 		}
 		if (!found) {
-			curr_score = &score[score_size];
+			curr_score = &scores[scores_size];
 			*curr_score = 0;
 			for (; chunk_head >= 0; chunk_head--) {
 				*curr_score *= 5;
@@ -150,14 +150,14 @@ unsigned long solve2(char** puzzle)
 					break;
 				}
 			}
-			score = realloc(score, (++score_size + 1) *
+			scores = realloc(scores, (++scores_size + 1) *
 					sizeof(unsigned long));
 		}
 		chunk_head = 0;
 	}
-	score = realloc(score, score_size * sizeof(unsigned long));
-	qsort(score, score_size, sizeof(unsigned long), cmpul);
-	return score[score_size / 2];
+	scores = realloc(scores, scores_size * sizeof(unsigned long));
+	qsort(scores, scores_size, sizeof(unsigned long), cmpul);
+	return scores[scores_size / 2];
 	
 
 }
