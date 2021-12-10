@@ -136,6 +136,7 @@ unsigned long solve2(char** puzzle)
 		if (!found) {
 			curr_score = &scores[scores_size];
 			*curr_score = 0;
+			--chunk_head;
 			for (; chunk_head >= 0; chunk_head--) {
 				*curr_score *= 5;
 				switch(chunk[chunk_head]) {
