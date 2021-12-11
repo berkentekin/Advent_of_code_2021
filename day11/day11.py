@@ -21,7 +21,6 @@ def illuminate(arr, row, col):
                     arr[i][j] += 1
                 if ((i, j) not in visited) and arr[i][j] > 9:
                     illuminate(arr, i, j)
-
             except IndexError:
                 continue
 
