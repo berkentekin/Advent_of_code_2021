@@ -30,11 +30,9 @@ def solve1day(arr: list(list())) -> None:
     global result, visited
     for row in range(0, len(arr)):
         for col in range(0, len(arr[row])):
-            if arr[row][col] == 9:
-                arr[row][col] += 1
+            arr[row][col] += 1
+            if arr[row][col] == 10:
                 illuminate(arr, row, col)
-            else:
-                arr[row][col] += 1
     visited = set()
     for row in range(0, len(arr)):
         for col in range(0, len(arr[row])):
