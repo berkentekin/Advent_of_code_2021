@@ -11,7 +11,7 @@ learn it."""
 
 
 def solve(pathDict, begin, usedup=0, path=["start"]):
-    global result, seen_nodes, lletter, visit, alltrips
+    global result, lletter
     if (begin == "end"):
         result += 1
         return
