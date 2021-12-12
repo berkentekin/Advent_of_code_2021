@@ -1,13 +1,10 @@
-from queue import Queue
 pathDict = dict()
 result = 0
-seen_nodes = set()
+temp = 0
 lower = set()
 lletter = 0
-alltrips = set()
-temp = 0
 
-"""This FrankenCode is absolutely horrible. I got very annoyed with
+"""This attempt is absolutely pathetic. I got very annoyed with
 the problem and sort of winged it. OF COURSE I will be taking a
 second look at this code. I'll probably use NetworkX if I manage to
 learn it."""
