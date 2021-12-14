@@ -9,7 +9,7 @@ def solve(s, rules, steps):
     return s
 
 
-with open("test.in") as f:
+with open("../inputs/day14_input.in") as f:
     rules = defaultdict(str)
     s = f.readline().strip()
     for line in f.readlines():
